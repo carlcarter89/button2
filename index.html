@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Copy Button</title>
-  <!-- Include Font Awesome CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     /* Style the button */
     .copy-button {
@@ -16,7 +14,7 @@
       text-align: center;
       text-decoration: none;
       display: inline-block;
-      font-size: 14px;
+      font-size: 28px;
       margin: none;
       cursor: pointer;
       border-radius: none;
@@ -32,7 +30,7 @@
 <input type="text" value="" id="textToCopy">
 <button class="copyButton" onclick="copyToClipboard()">
   <!-- Add Font Awesome copy icon -->
-  <i class="far fa-copy" style="font-size:14px"></i> Copy Question
+  <i class="far fa-copy" style="font-size:28px"></i> Copy Question
 </button>
 
 <script>
@@ -57,9 +55,6 @@
       const clipboardContents = textToCopy.value;
   }
 </script>
-
-<!-- Include Font Awesome JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 
 </body>
 </html>
