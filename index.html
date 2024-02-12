@@ -12,14 +12,14 @@
       background-color: #4CAF50;
       color: white;
       border: none;
-      padding: none;
+      padding: 10px 10px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
       font-size: 14px;
-      margin: 2px 2px;
+      margin: none;
       cursor: pointer;
-      border-radius: 2px;
+      border-radius: none;
     }
     #myInput {
       display: none;
@@ -29,10 +29,10 @@
 <body>
 
 <!-- Create an input field and a copy button -->
-<input type="text" value="" id="textToCopy">
-<button class="copy-button" onclick="copyToClipboard()">
+<input type="text" value="" id="textToCopy" style="position: absolute; left: -9999px;">
+<button class="copyButton" onclick="copyToClipboard()">
   <!-- Add Font Awesome copy icon -->
-  <i class="far fa-copy" style="font-size:14px"></i>
+  <i class="far fa-copy" style="font-size:14px"></i>Copy Question
 </button>
 
 <script>
@@ -47,12 +47,14 @@
       textToCopy.value = decodeURIComponent(copyText);
   }
 
+  const copyButton = document.getElementById("copyButton");
+  copyButton.title = "Copy";
+
   function copyToClipboard() {
       textToCopy.select();
       document.execCommand("copy");
 
       const clipboardContents = textToCopy.value;
-      alert("Copied the text: " + clipboardContents);
   }
 </script>
 
