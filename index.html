@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Copy Button</title>
+  <!-- Include Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     /* Style the button */
     .copy-button {
@@ -14,47 +16,47 @@
       text-align: center;
       text-decoration: none;
       display: inline-block;
-      font-size: 28px;
-      margin: none;
+      font-size: 14px;
+      margin: 4px 2px;
       cursor: pointer;
-      border-radius: none;
+      border-radius: 4px;
     }
-    #myInput {
+    /* Hide the input field */
+    #textToCopy {
       display: none;
     }
   </style>
 </head>
 <body>
 
-<!-- Create an input field and a copy button -->
-<input type="text" value="" id="textToCopy">
-<button class="copyButton" onclick="copyToClipboard()">
+<button class="copy-button" onclick="copyToClipboard()">
   <!-- Add Font Awesome copy icon -->
-  <i class="far fa-copy" style="font-size:28px"></i> Copy Question
+  <i class="far fa-copy" style="font-size:14px"></i>复制问题
 </button>
 
 <script>
-  function getQueryParam(name) {
-      const urlSearchParams = new URLSearchParams(window.location.search);
-      return urlSearchParams.get(name);
-  }
-
-  const textToCopy = document.getElementById("textToCopy");
-  const copyText = getQueryParam("copy");
-  if (copyText) {
-      textToCopy.value = decodeURIComponent(copyText);
-  }
-
-  const copyButton = document.getElementById("copyButton");
-  copyButton.title = "Copy";
-
   function copyToClipboard() {
-      textToCopy.select();
-      document.execCommand("copy");
-
-      const clipboardContents = textToCopy.value;
+    const urlParams = new URLSearchParams(window.location.search);
+    const paramsString = urlParams.get("copy");
+    
+    if (paramsString) {
+      const textToCopy = decodeURIComponent(paramsString);
+      
+      // Use the Clipboard API to copy the text to the clipboard
+      navigator.clipboard.writeText(textToCopy)
+        .then(() => {})
+        .catch(err => {
+          console.error('Failed to copy text: ', err);
+          alert("Failed to copy text. Please try again.");
+        });
+    } else {
+      alert("No text found in the URL parameters.");
+    }
   }
 </script>
+
+<!-- Include Font Awesome JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 
 </body>
 </html>
